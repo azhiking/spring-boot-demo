@@ -2,11 +2,13 @@ package com.tomhurry.annotation;
 
 import com.tomhurry.annotation.message.MessageReceiveService;
 import com.tomhurry.annotation.model.MqMessage;
+import com.tomhurry.annotation.service.RuleNodeInitService;
 import com.tomhurry.util.SpringUtil;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 
 import javax.annotation.Resource;
 
@@ -17,7 +19,8 @@ public class SpringBootDemoAnnotationApplication implements ApplicationRunner {
     private MessageReceiveService messageReceiveService;
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringBootDemoAnnotationApplication.class, args);
+        ConfigurableApplicationContext context = SpringApplication.run(SpringBootDemoAnnotationApplication.class, args);
+        context.getBean(RuleNodeInitService.class).performInstall();
     }
 
     @Override

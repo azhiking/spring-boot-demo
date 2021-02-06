@@ -1,6 +1,6 @@
 package com.tomhurry.annotation.handler.router.backup.mysql;
 
-import com.tomhurry.annotation.annotation.MessageRouterMapping;
+import com.tomhurry.annotation.annotation.RuleNode;
 import com.tomhurry.annotation.handler.router.others.BackupFailedRetryJobHandler;
 import com.tomhurry.annotation.handler.router.others.ProcessQueueJobHandler;
 import com.tomhurry.annotation.model.MessageHandler;
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
  */
 @Slf4j
 @Service
-@MessageRouterMapping(action = {"fbackup", "ibackup"}, object = "mysql", type = "agent", status = "2",
+@RuleNode(action = {"fbackup", "ibackup"}, object = "mysql", type = "agent", status = "2",
         before = {BackupFailedRetryJobHandler.class}, after = {ProcessQueueJobHandler.class})
 public class MysqlBackupExceptionHandler implements MessageHandler {
     @Override

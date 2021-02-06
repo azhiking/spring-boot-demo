@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
  * @date 2020/10/13
  * @since 1.0.0
  */
-@com.tomhurry.annotation.annotation.MessageHandler
 @Slf4j
 @Service
 public class ProcessQueueJobHandler implements MessageHandler {

@@ -6,6 +6,7 @@ import com.tomhurry.exception.handler.exception.JsonException;
 import com.tomhurry.exception.handler.exception.PageException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -25,6 +26,7 @@ public class TestController {
         throw new JsonException(ApiResponseEnum.UNKNOWN_ERROR);
     }
 
+    @RequestMapping("/page")
     @GetMapping("/page")
     public ModelAndView pageException() {
         throw new PageException(ApiResponseEnum.UNKNOWN_ERROR);
