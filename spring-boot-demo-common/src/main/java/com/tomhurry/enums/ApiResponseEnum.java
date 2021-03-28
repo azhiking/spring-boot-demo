@@ -16,7 +16,9 @@ public enum ApiResponseEnum {
      */
     OK(200, "success"),
 
-    UNKNOWN_ERROR(500, "unknown error");
+    UNKNOWN_ERROR(500, "unknown error"),
+
+    DATA_EXIST(401, "数据已存在");
 
 
     private Integer code;

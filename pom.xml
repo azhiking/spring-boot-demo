@@ -15,9 +15,15 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>spring-boot-demo-exception-handler</module>
+        <module>spring-boot-demo-annotation</module>
         <module>spring-boot-demo-common</module>
+        <module>spring-boot-demo-dynamic-datasource</module>
+        <module>spring-boot-demo-dynamic-rabbitmq</module>
+        <module>spring-boot-demo-email</module>
+        <module>spring-boot-demo-exception-handler</module>
         <module>spring-boot-demo-mybatis-auto-generator</module>
+        <module>spring-boot-demo-protobuf</module>
+        <module>spring-boot-demo-screw</module>
     </modules>
 
     <properties>
@@ -36,6 +42,7 @@
         <protobuf.version>3.3.0</protobuf.version>
         <screw.version>1.0.3</screw.version>
         <freemarker.version>2.3.30</freemarker.version>
+
 
     </properties>
 
@@ -147,9 +154,11 @@
                 <artifactId>protobuf-maven-plugin</artifactId>
                 <version>0.5.0</version>
                 <configuration>
+                    <!--suppress UnresolvedMavenProperty -->
                     <protocArtifact>com.google.protobuf:protoc:${protobuf.version}:exe:${os.detected.classifier}
                     </protocArtifact>
                     <pluginId>grpc-java</pluginId>
+                    <!--suppress UnresolvedMavenProperty -->
                     <pluginArtifact>io.grpc:protoc-gen-grpc-java:${grpc.version}:exe:${os.detected.classifier}
                     </pluginArtifact>
                 </configuration>

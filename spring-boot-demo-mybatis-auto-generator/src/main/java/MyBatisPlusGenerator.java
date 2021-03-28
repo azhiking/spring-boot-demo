@@ -29,7 +29,7 @@ public class MyBatisPlusGenerator {
         config.setActiveRecord(true) // 是否支持AR模式
                 .setAuthor("taozhi") // 作者
                 .setEnableCache(false)// XML 二级缓存
-                .setOutputDir("F:\\Workspaces\\Github-Repositories\\spring-boot-demo\\spring-boot-demo-mybatis-auto-generator\\src\\main\\java") // 生成路径
+                .setOutputDir("E:\\workspace\\Github-Repositories\\spring-boot-demo\\spring-boot-demo-transactional\\src\\main\\java") // 生成路径
                 .setFileOverride(true)  // 文件覆盖
                 .setBaseResultMap(true)//生成基本的resultMap
 //                .setBaseColumnList(true)//生成基本的SQL片段
@@ -44,13 +44,13 @@ public class MyBatisPlusGenerator {
         DataSourceConfig dsConfig = new DataSourceConfig();
         dsConfig.setDbType(DbType.MYSQL)  // 设置数据库类型
                 .setDriverName("com.mysql.cj.jdbc.Driver")
-                .setUrl("jdbc:mysql://127.0.0.1:3306/cdmone_tester?useUnicode=true&useSSL=false&characterEncoding=utf8")
+                .setUrl("jdbc:mysql://127.0.0.1:3306/spring_boot_demo?useUnicode=true&useSSL=false&characterEncoding=utf8")
                 .setUsername("root")
                 .setPassword("123456");
 
         //4. 包名策略配置
         PackageConfig pkConfig = new PackageConfig();
-        pkConfig.setParent("com.tomhurry.sniffer")
+        pkConfig.setParent("com.tomhurry.transactional")
                 .setMapper("dao")
                 .setService("service")
                 .setController("controller")

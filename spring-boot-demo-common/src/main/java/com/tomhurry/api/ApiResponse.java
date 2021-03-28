@@ -26,7 +26,15 @@ public class ApiResponse<T> extends Result<T> {
     }
 
     public static <T> ApiResponse<T> genFailedResponse() {
-        return new ApiResponse<>(500, "failed", null);
+        return genFailedResponse(null);
+    }
+
+    public static <T> ApiResponse<T> genFailedResponse(T data) {
+        return new ApiResponse<>(500, "failed", data);
+    }
+
+    public static <T> ApiResponse<T> genFailedResponse(String msg, T data) {
+        return new ApiResponse<>(500, msg, data);
     }
 
     public static <T> ApiResponse<T> genResponse(ApiResponseEnum apiResponseEnum) {

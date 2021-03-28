@@ -8,6 +8,10 @@ package com.tomhurry.dynamic.datasource.core;
  * @since 1.0.0
  */
 public class DataSourceContextHolder {
+
+    private DataSourceContextHolder() {
+    }
+
     private static final ThreadLocal<String> contextHolder = new ThreadLocal<>();
 
     /**
