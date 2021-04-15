@@ -1,3 +1,5 @@
+package com.tomhurry;
+
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.config.DataSourceConfig;
@@ -5,8 +7,6 @@ import com.baomidou.mybatisplus.generator.config.GlobalConfig;
 import com.baomidou.mybatisplus.generator.config.PackageConfig;
 import com.baomidou.mybatisplus.generator.config.StrategyConfig;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
-
-import java.sql.SQLException;
 
 /**
  * MyBatisPlus自动生成器
@@ -22,27 +22,28 @@ import java.sql.SQLException;
  */
 public class MyBatisPlusGenerator {
 
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) {
         // 选择 freemarker 引擎，默认 Veloctiy
         //1. 全局配置
         GlobalConfig config = new GlobalConfig();
-        config.setActiveRecord(true) // 是否支持AR模式
-                .setAuthor("taozhi") // 作者
-                .setEnableCache(false)// XML 二级缓存
-                .setOutputDir("E:\\workspace\\Github-Repositories\\spring-boot-demo\\spring-boot-demo-transactional\\src\\main\\java") // 生成路径
-                .setFileOverride(true)  // 文件覆盖
-                .setBaseResultMap(true)//生成基本的resultMap
+        config.setActiveRecord(true)
+                .setAuthor("taozhi")
+                .setEnableCache(false)
+                .setOutputDir(System.getProperty("user.dir") + "\\spring-boot-demo-mybatis-auto-generator\\src\\main\\java")
+                .setFileOverride(true)
+                .setBaseResultMap(true)
 //                .setBaseColumnList(true)//生成基本的SQL片段
                 /* 自定义文件命名，注意 %s 会自动填充表实体属性！ */
                 .setMapperName("%sMapper")
                 .setXmlName("%sMapper")
                 .setServiceName("%sService")
                 .setServiceImplName("%sServiceImpl")
-                .setControllerName("%sController");
+                .setControllerName("%sController")
+                .setOpen(false);
 
         //2. 数据源配置
         DataSourceConfig dsConfig = new DataSourceConfig();
-        dsConfig.setDbType(DbType.MYSQL)  // 设置数据库类型
+        dsConfig.setDbType(DbType.MYSQL)
                 .setDriverName("com.mysql.cj.jdbc.Driver")
                 .setUrl("jdbc:mysql://127.0.0.1:3306/spring_boot_demo?useUnicode=true&useSSL=false&characterEncoding=utf8")
                 .setUsername("root")
