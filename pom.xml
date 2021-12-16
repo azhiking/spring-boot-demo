@@ -24,6 +24,8 @@
         <module>spring-boot-demo-mybatis-auto-generator</module>
         <module>spring-boot-demo-protobuf</module>
         <module>spring-boot-demo-screw</module>
+        <module>spring-boot-demo-grpc</module>
+        <module>spring-boot-demo-tax</module>
     </modules>
 
     <properties>

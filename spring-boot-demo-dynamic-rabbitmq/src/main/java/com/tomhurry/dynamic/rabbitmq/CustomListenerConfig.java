@@ -27,7 +27,7 @@ public class CustomListenerConfig {
 
     @Bean
     public SimpleMessageListenerContainer simpleMessageListenerContainer() {
-        SimpleMessageListenerContainer container = new SimpleMessageListenerContainer(rabbitmqConfig.connectionFactory());
+        SimpleMessageListenerContainer container = new SimpleMessageListenerContainer(rabbitmqConfig.getConnectionFactory());
         container.setConsumerStartTimeout(3000L);
         container.setExposeListenerChannel(true);
         // 设置确认模式，自动确认

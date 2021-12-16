@@ -2,9 +2,11 @@ package com.tomhurry.dynamic.rabbitmq;
 
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.connection.SimpleRoutingConnectionFactory;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -16,27 +18,29 @@ import java.util.concurrent.ConcurrentHashMap;
  * @since 1.0.0
  */
 @Service
-public class DynamicRoutingConnectionManager {
+public class DynamicRoutingRabbitmqManager {
 
     @Resource
     private SimpleRoutingConnectionFactory simpleRoutingConnectionFactory;
 
     private final Map<Object, ConnectionFactory> targetConnectionFactories = new ConcurrentHashMap<Object, ConnectionFactory>();
 
+    private final Map<String, Object> engineIdConnectionFactoryName = new HashMap<>();
+
     private ConnectionFactory defaultTargetConnectionFactory;
 
-    /**
-     * 设置默认MQ连接
-     *
-     * @param connectionFactory
-     */
-    public void setDefaultTargetConnectionFactory(ConnectionFactory connectionFactory) {
-        this.defaultTargetConnectionFactory = connectionFactory;
-        simpleRoutingConnectionFactory.setDefaultTargetConnectionFactory(connectionFactory);
+    @Bean
+    public SimpleRoutingConnectionFactory defaultSimpleRoutingConnectionFactory() {
+        return new SimpleRoutingConnectionFactory();
     }
 
-    public ConnectionFactory getDefaultTargetConnectionFactory() {
+    private ConnectionFactory getDefaultTargetConnectionFactory() {
         return this.defaultTargetConnectionFactory;
+    }
+
+    private void setDefaultTargetConnectionFactory(ConnectionFactory connectionFactory) {
+        this.defaultTargetConnectionFactory = connectionFactory;
+        simpleRoutingConnectionFactory.setDefaultTargetConnectionFactory(connectionFactory);
     }
 
     public void addTargetConnectionFactory(String key, ConnectionFactory connectionFactory) {
