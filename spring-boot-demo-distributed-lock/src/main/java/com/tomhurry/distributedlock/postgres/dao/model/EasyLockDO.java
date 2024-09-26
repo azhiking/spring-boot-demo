@@ -1,5 +1,7 @@
 package com.tomhurry.distributedlock.postgres.dao.model;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.tomhurry.distributedlock.common.Constants;
 import lombok.Data;
@@ -21,6 +23,7 @@ public class EasyLockDO {
     /**
      * id
      */
+    @TableId(type = IdType.AUTO)
     private Integer id;
 
     /**

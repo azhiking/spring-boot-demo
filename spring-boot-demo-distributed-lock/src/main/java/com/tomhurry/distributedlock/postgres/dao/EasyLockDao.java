@@ -96,14 +96,14 @@ public class EasyLockDao {
     private final class CleanLockTask implements Runnable {
         @Override
         public void run() {
-            LOGGER.info("clean lock task start");
+            //LOGGER.info("clean lock task start");
             try {
                 List<EasyLockDO> easyLockDOList = easyLockMapper.selectList(new LambdaQueryWrapper<>());
                 if (easyLockDOList != null && !easyLockDOList.isEmpty()) {
                     for (EasyLockDO easyLockDO : easyLockDOList) {
                         if (System.currentTimeMillis() - easyLockDO.getUpdateTime() > Optional.ofNullable(easyLockDO.getTimeout()).orElse(Constants.DEFAULT_LOCK_TIMEOUT)) {
                             easyLockMapper.deleteById(easyLockDO.getId());
-                            LOGGER.info("clean lock task delete lock:{}", easyLockDO);
+                            LOGGER.info("clean lock task, delete lock:{}", easyLockDO);
                         }
                     }
                 }
@@ -111,7 +111,7 @@ public class EasyLockDao {
             } catch (Exception e) {
                 LOGGER.error("clean lock task error", e);
             }
-            LOGGER.info("clean lock task end");
+            //LOGGER.info("clean lock task end");
         }
     }
 }
