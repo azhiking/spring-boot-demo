@@ -26,6 +26,7 @@
         <module>spring-boot-demo-screw</module>
         <module>spring-boot-demo-grpc</module>
         <module>spring-boot-demo-tax</module>
+        <module>spring-boot-demo-lock</module>
     </modules>
 
     <properties>
